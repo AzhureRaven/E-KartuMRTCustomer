@@ -13,7 +13,7 @@ object Koneksi {
             val policy = ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
             Class.forName("org.mariadb.jdbc.Driver")
-            val ip = "192.168.100.182" //pake ip laptop sekarang yg ipv4, cari di cmd ipconfig
+            val ip = IP.getIP() //pake ip laptop sekarang yg ipv4, cari di cmd ipconfig
             //val ip = "localhost"
             val jdbcUrl = "jdbc:mariadb://$ip:3306/e_kartu_mrt"
             val connection = DriverManager.getConnection(jdbcUrl, "root", "")
