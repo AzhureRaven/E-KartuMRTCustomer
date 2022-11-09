@@ -1,6 +1,6 @@
 package com.example.e_kartumrt
 
-data class User(
+data class EKartu(
     var id_kartu:Int,
     var nama_lengkap:String,
     var username:String,
@@ -13,6 +13,6 @@ data class User(
     var status_kartu:Int
 ) {
     override fun toString(): String {
-        return "User(id_kartu=$id_kartu, nama_lengkap='$nama_lengkap', username='$username', password='$password', email='$email', tgl_lahir='$tgl_lahir', kelamin='$kelamin', tgl_register='$tgl_register', saldo=$saldo, status_kartu=$status_kartu)"
+        return "EKartu(id_kartu=$id_kartu, nama_lengkap='$nama_lengkap', username='$username', password='$password', email='$email', tgl_lahir='$tgl_lahir', kelamin='$kelamin', tgl_register='$tgl_register', saldo=$saldo, status_kartu=$status_kartu)"
     }
 }

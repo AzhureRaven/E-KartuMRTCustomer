@@ -37,8 +37,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    //implementation files('libs\\mariadb-java-client-3.0.8.jar')
     implementation files('libs\\mariadb-java-client-1.8.0.jar')
+    //implementation files('libs\\mariadb-java-client-3.0.8.jar')
+    //implementation files('libs\\mariadb-java-client-1.8.0.jar')
     //implementation files('libs\\mysql-connector-java-5.1.23-bin.jar')
     //implementation files('libs\\mysql-connector-j-8.0.31.jar')
 
