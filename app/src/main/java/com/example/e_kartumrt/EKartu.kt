@@ -1,5 +1,9 @@
 package com.example.e_kartumrt
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class EKartu(
     var id_kartu:Int,
     var nama_lengkap:String,
@@ -11,7 +15,7 @@ data class EKartu(
     var tgl_register:String,
     var saldo:Double,
     var status_kartu:Int
-) {
+) : Parcelable {
     override fun toString(): String {
         return "EKartu(id_kartu=$id_kartu, nama_lengkap='$nama_lengkap', username='$username', password='$password', email='$email', tgl_lahir='$tgl_lahir', kelamin='$kelamin', tgl_register='$tgl_register', saldo=$saldo, status_kartu=$status_kartu)"
     }

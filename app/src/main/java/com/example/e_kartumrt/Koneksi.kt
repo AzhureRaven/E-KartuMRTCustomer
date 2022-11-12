@@ -4,6 +4,11 @@ import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import java.sql.Connection
 import java.sql.DriverManager
+import java.text.NumberFormat
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 object Koneksi {
@@ -44,6 +49,26 @@ object Koneksi {
         return DriverManager.getConnection(jdbcUrl, "root", "")
     }
 
+    //helper
+    fun getDate(dateTime: String, dateFormat: String = "yyyy-MM-dd HH:mm:ss", field: String = "dd MMMM yyyy"): String? {
+        val input = SimpleDateFormat(dateFormat)
+        val output = SimpleDateFormat(field)
+        try {
+            val getAbbreviate = input.parse(dateTime)    // parse input
+            return output.format(getAbbreviate)    // format output
+        } catch (e: ParseException) {
+            e.printStackTrace()
+        }
+
+        return null
+    }
+
+    fun Int.toRupiah():String{
+        // digunakan untuk mengubah format angka menjadi format uang rupiah
+        val numberFormat = NumberFormat.getCurrencyInstance(Locale("in","ID"))
+        return numberFormat.format(this)
+    }
+
     //EKartu
     fun getEKartus(): ArrayList<EKartu>{
 
@@ -67,7 +92,7 @@ object Koneksi {
     }
 
     fun getEKartu(username:String, password:String): EKartu?{
-        val query = getConnection().prepareStatement("select * from e_kartu where (username = '$username' or email = '$username' )and password = '$password'")
+        val query = getConnection().prepareStatement("select * from e_kartu where (username = '$username' or email = '$username' )and password = '$password' and status_kartu = 1")
         val result = query.executeQuery()
         var eKartu: EKartu? = null
         while(result.next()){
@@ -109,6 +134,11 @@ object Koneksi {
     fun insertEKartu(eKartu: EKartu){
         val query = getConnection().prepareStatement("insert into e_kartu (nama_lengkap,username,password,email,tgl_lahir,kelamin,saldo) " +
                 "values ('${eKartu.nama_lengkap}','${eKartu.username}','${eKartu.password}','${eKartu.email}','${eKartu.tgl_lahir}','${eKartu.kelamin}',0)")
+        val result = query.executeUpdate()
+    }
+
+    fun tambahSaldo(eKartu: EKartu,saldo: Int){
+        val query = getConnection().prepareStatement("update e_kartu set saldo = saldo + $saldo where id_kartu = ${eKartu.id_kartu}")
         val result = query.executeUpdate()
     }
 

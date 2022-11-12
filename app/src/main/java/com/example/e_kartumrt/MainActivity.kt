@@ -13,13 +13,16 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        Toast.makeText(this, Koneksi.getEKartus().toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, Koneksi.getEKartus().toString(), Toast.LENGTH_SHORT).show()
 
         binding.btnLogin.setOnClickListener { 
             if(binding.etLogUser.text.toString()!="" && binding.etLogPass.text.toString()!=""){
                 val ekartu = Koneksi.getEKartu(binding.etLogUser.text.toString(),binding.etLogPass.text.toString())
                 if(ekartu != null){
-                    Toast.makeText(this, ekartu.toString(), Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, ekartu.toString(), Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainMenuActivity::class.java)
+                    intent.putExtra("ekartu",ekartu)
+                    startActivity(intent)
                 }
                 else{
                     Toast.makeText(this, "Username/Password Invalid!", Toast.LENGTH_SHORT).show()
