@@ -1,10 +1,12 @@
 package com.example.e_kartumrt
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.widget.Toast
-import com.example.e_kartumrt.databinding.ActivityMainBinding
+import androidx.appcompat.app.AppCompatActivity
 import com.example.e_kartumrt.databinding.ActivityMainMenuBinding
+
 
 class MainMenuActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainMenuBinding
@@ -33,7 +35,18 @@ class MainMenuActivity : AppCompatActivity() {
     fun loadProfile(){
         val fragment = ProfileFragment(eKartu)
         fragment.setOnLogoutListener = {
-            finish()
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+            builder.setTitle("Logout")
+            builder.setMessage("Apakah Anda Yakin Ingin Logout?")
+            builder.setPositiveButton("Iya",DialogInterface.OnClickListener { dialog, which ->
+                    dialog.dismiss()
+                    finish()
+                })
+            builder.setNegativeButton("Tidak", DialogInterface.OnClickListener { dialog, which ->
+                    dialog.dismiss()
+                })
+            val alert: AlertDialog = builder.create()
+            alert.show()
         }
         fragment.setOnSaldoListener = {saldo: Int ->
             Koneksi.tambahSaldo(eKartu, saldo)
