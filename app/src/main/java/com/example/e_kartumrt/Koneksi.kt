@@ -66,4 +66,30 @@ object Koneksi {
         return EKartus
     }
 
+    fun getEKartu(username:String, password:String): EKartu?{
+        val query = getConnection().prepareStatement("select * from e_kartu where username = $username and password = $password")
+        val result = query.executeQuery()
+        var eKartu: EKartu? = null
+        while(result.next()){
+            eKartu = EKartu(result.getInt("id_kartu"),
+                result.getString("nama_lengkap"),
+                result.getString("username"),
+                result.getString("password"),
+                result.getString("email"),
+                result.getString("tgl_lahir"),
+                result.getString("kelamin"),
+                result.getString("tgl_register"),
+                result.getDouble("saldo"),
+                result.getInt("status_kartu")
+            )
+        }
+        return eKartu
+    }
+
+    fun insertEKartu(eKartu: EKartu){
+        val query = getConnection().prepareStatement("insert into e_kartu (nama_lengkap,username,password,email,tgl_lahir,kelamin,saldo) " +
+                "values ('${eKartu.nama_lengkap}','${eKartu.username}','${eKartu.password}','${eKartu.email}','${eKartu.tgl_lahir}','${eKartu.kelamin}',${eKartu.saldo})")
+        val result = query.executeUpdate()
+    }
+
 }
