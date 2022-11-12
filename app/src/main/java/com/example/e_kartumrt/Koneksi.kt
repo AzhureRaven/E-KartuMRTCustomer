@@ -9,16 +9,15 @@ import java.sql.DriverManager
 object Koneksi {
 
     fun getConnection():Connection{
-
+        val policy = ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
+        Class.forName("org.mariadb.jdbc.Driver")
+        //Class.forName("com.mysql.jdbc.Driver");
+        val ip = IP.getIP() //pake ip laptop sekarang yg ipv4, cari di cmd ipconfig //copy IP.kt di discord, paste ke project sendiri, di gitignore itu biar gk tabrakan ip address masing-masing laptop
+        //xampp kemungkinan juga perlu di run as administrator untuk bekerja
+        //val ip = "localhost"
+        val jdbcUrl = "jdbc:mariadb://$ip:3306/e_kartu_mrt"
         try {
-            val policy = ThreadPolicy.Builder().permitAll().build()
-            StrictMode.setThreadPolicy(policy)
-            Class.forName("org.mariadb.jdbc.Driver")
-            //Class.forName("com.mysql.jdbc.Driver");
-            val ip = IP.getIP() //pake ip laptop sekarang yg ipv4, cari di cmd ipconfig //copy IP.kt di discord, paste ke project sendiri, di gitignore itu biar gk tabrakan ip address masing-masing laptop
-            //xampp kemungkinan juga perlu di run as administrator untuk bekerja
-            //val ip = "localhost"
-            val jdbcUrl = "jdbc:mariadb://$ip:3306/e_kartu_mrt"
             val connection = DriverManager.getConnection(jdbcUrl, "root", "")
             println(connection.isValid(0))
             println("Bekerja")
@@ -42,9 +41,10 @@ object Koneksi {
         catch (e:Exception){
             println(e)
         }
-        return DriverManager.getConnection("", "root", "")
+        return DriverManager.getConnection(jdbcUrl, "root", "")
     }
 
+    //EKartu
     fun getEKartus(): ArrayList<EKartu>{
 
         val query = getConnection().prepareStatement("select * from e_kartu")
