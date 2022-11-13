@@ -12,5 +12,5 @@
     <item
         android:id="@+id/menuTiket"
         android:icon="@drawable/ic_baseline_train_24"
-        android:title="Tiket" />
+        android:title="E-Tiket" />
 </menu>
