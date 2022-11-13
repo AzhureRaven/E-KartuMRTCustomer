@@ -50,7 +50,7 @@ object Koneksi {
     }
 
     //helper
-    fun getDate(dateTime: String, dateFormat: String = "yyyy-MM-dd HH:mm:ss", field: String = "dd MMMM yyyy"): String? {
+    fun getDate(dateTime: String, field: String = "dd MMMM yyyy", dateFormat: String = "yyyy-MM-dd HH:mm:ss"): String? {
         val input = SimpleDateFormat(dateFormat)
         val output = SimpleDateFormat(field)
         try {
@@ -71,7 +71,6 @@ object Koneksi {
 
     //EKartu
     fun getEKartus(): ArrayList<EKartu>{
-
         val query = getConnection().prepareStatement("select * from e_kartu")
         val result = query.executeQuery()
         val EKartus = ArrayList<EKartu>()
@@ -142,4 +141,68 @@ object Koneksi {
         val result = query.executeUpdate()
     }
 
+    //ETiket
+    fun getETikets(eKartu: EKartu): ArrayList<ETiket>{
+        val query = getConnection().prepareStatement("select * from e_tiket where id_kartu = ${eKartu.id_kartu}")
+        val result = query.executeQuery()
+        val eTikets = ArrayList<ETiket>()
+        while(result.next()){
+            val eTiket = ETiket(
+                result.getInt("id_tiket"),
+                result.getInt("id_kartu"),
+                result.getInt("id_stasiun_awal"),
+                result.getInt("id_stasiun_akhir"),
+                result.getInt("id_rute"),
+                result.getDouble("harga"),
+                result.getString("tgl_cetak"),
+                result.getInt("status_tiket")
+            )
+            eTikets.add(eTiket)
+        }
+        return eTikets
+    }
+
+    //Rute
+    fun getRute(eTiket: ETiket): Rute?{
+        val query = getConnection().prepareStatement("select * from rute where id_rute = ${eTiket.id_rute}")
+        val result = query.executeQuery()
+        var rute: Rute? = null
+        while(result.next()){
+            rute = Rute(result.getInt("id_rute"),
+                result.getString("nama_rute"),
+                result.getDouble("ppm"),
+                result.getInt("status_rute")
+            )
+        }
+        return rute
+    }
+
+    //Stasiun
+    fun getStasiunAwal(eTiket: ETiket): Stasiun?{
+        val query = getConnection().prepareStatement("select * from stasiun where id_stasiun = ${eTiket.id_stasiun_awal}")
+        val result = query.executeQuery()
+        var stasiun: Stasiun? = null
+        while(result.next()){
+            stasiun = Stasiun(result.getInt("id_stasiun"),
+                result.getString("alamat"),
+                result.getString("nama_stasiun"),
+                result.getInt("status_stasiun")
+            )
+        }
+        return stasiun
+    }
+
+    fun getStasiunAkhir(eTiket: ETiket): Stasiun?{
+        val query = getConnection().prepareStatement("select * from stasiun where id_stasiun = ${eTiket.id_stasiun_akhir}")
+        val result = query.executeQuery()
+        var stasiun: Stasiun? = null
+        while(result.next()){
+            stasiun = Stasiun(result.getInt("id_stasiun"),
+                result.getString("alamat"),
+                result.getString("nama_stasiun"),
+                result.getInt("status_stasiun")
+            )
+        }
+        return stasiun
+    }
 }

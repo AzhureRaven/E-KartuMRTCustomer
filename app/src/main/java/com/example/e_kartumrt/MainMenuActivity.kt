@@ -25,7 +25,7 @@ class MainMenuActivity : AppCompatActivity() {
 
             }
             else if (it.itemId == R.id.menuTiket) {
-
+                loadETiket()
             }
             return@setOnItemSelectedListener true
         }
@@ -54,6 +54,15 @@ class MainMenuActivity : AppCompatActivity() {
             Toast.makeText(this, "Berhasil Tambah Saldo!", Toast.LENGTH_SHORT).show()
             loadProfile()
         }
+        val fragmentManager = supportFragmentManager.beginTransaction()
+        fragmentManager.replace(R.id.flUser, fragment)
+        fragmentManager.setReorderingAllowed(true)
+        fragmentManager.commit()
+    }
+
+    fun loadETiket(){
+        val fragment = ETiketsFragment(eKartu,this)
+
         val fragmentManager = supportFragmentManager.beginTransaction()
         fragmentManager.replace(R.id.flUser, fragment)
         fragmentManager.setReorderingAllowed(true)
