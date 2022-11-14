@@ -62,7 +62,6 @@ class MainMenuActivity : AppCompatActivity() {
 
     fun loadETiket(){
         val fragment = ETiketsFragment(eKartu,this)
-
         val fragmentManager = supportFragmentManager.beginTransaction()
         fragmentManager.replace(R.id.flUser, fragment)
         fragmentManager.setReorderingAllowed(true)
