@@ -31,13 +31,13 @@ class ProfileFragment(val eKartu: EKartu) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.tvProfileName.text = eKartu.nama_lengkap
-        binding.tvProfileUsername.text = "${binding.tvProfileUsername.text} ${eKartu.username}"
-        binding.tvProfileEmail.text = "${binding.tvProfileEmail.text} ${eKartu.email}"
-        binding.tvProfileTglLahir.text = "${binding.tvProfileTglLahir.text} ${Koneksi.getDate(eKartu.tgl_lahir)}"
-        binding.tvProfileTglReg.text = "${binding.tvProfileTglReg.text} ${Koneksi.getDate(eKartu.tgl_register)}"
+        binding.tvProfileUsername.text = "${eKartu.username}"
+        binding.tvProfileEmail.text = "${eKartu.email}"
+        binding.tvProfileTglLahir.text = "${Koneksi.getDate(eKartu.tgl_lahir)}"
+        binding.tvProfileTglReg.text = "${Koneksi.getDate(eKartu.tgl_register)}"
         val kelamin = if(eKartu.kelamin == "L") "Laki-Laki" else "Perempuan"
-        binding.tvProfileKelamin.text = "${binding.tvProfileKelamin.text} $kelamin"
-        binding.tvProfileSaldo.text = "${binding.tvProfileSaldo.text} ${eKartu.saldo.toInt().toRupiah()}"
+        binding.tvProfileKelamin.text = "$kelamin"
+        binding.tvProfileSaldo.text = "${eKartu.saldo.toInt().toRupiah()}"
 
         binding.btnLogout.setOnClickListener {
             setOnLogoutListener?.invoke()

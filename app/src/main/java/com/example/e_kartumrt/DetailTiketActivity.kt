@@ -32,13 +32,13 @@ class DetailTiketActivity : AppCompatActivity() {
                 binding.tvETiketStatus.text = "Status: Non-Aktif"
             }
         }
-        binding.tvETiketNo.text = "${binding.tvETiketNo.text} ${eTiket.id_tiket}"
-        binding.tvETiketRute.text = "${binding.tvETiketRute.text} ${Koneksi.getRute(eTiket)?.nama_rute}"
-        binding.tvETiketStaAwal.text = "${binding.tvETiketStaAwal.text} ${Koneksi.getStasiunAwal(eTiket)?.nama_stasiun}"
-        binding.tvETiketAlaAwal.text = "${binding.tvETiketAlaAwal.text} ${Koneksi.getStasiunAwal(eTiket)?.alamat}"
-        binding.tvETiketStaAkhir.text = "${binding.tvETiketStaAkhir.text} ${Koneksi.getStasiunAkhir(eTiket)?.nama_stasiun}"
-        binding.tvETiketAlaAkhir.text = "${binding.tvETiketAlaAkhir.text} ${Koneksi.getStasiunAkhir(eTiket)?.alamat}"
-        binding.tvETiketHarga.text = "${binding.tvETiketHarga.text} ${eTiket.harga.toInt().toRupiah()}"
+        binding.tvETiketNo.text = "${eTiket.id_tiket}"
+        binding.tvETiketRute.text = "${Koneksi.getRute(eTiket)?.nama_rute}"
+        binding.tvETiketStaAwal.text = "${Koneksi.getStasiunAwal(eTiket)?.nama_stasiun}"
+        binding.tvETiketAlaAwal.text = "${Koneksi.getStasiunAwal(eTiket)?.alamat}"
+        binding.tvETiketStaAkhir.text = "${Koneksi.getStasiunAkhir(eTiket)?.nama_stasiun}"
+        binding.tvETiketAlaAkhir.text = "${Koneksi.getStasiunAkhir(eTiket)?.alamat}"
+        binding.tvETiketHarga.text = "${eTiket.harga.toInt().toRupiah()}"
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
