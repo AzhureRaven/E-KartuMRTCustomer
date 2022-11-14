@@ -22,7 +22,7 @@ class MainMenuActivity : AppCompatActivity() {
             if (it.itemId == R.id.menuProfile) {
                 loadProfile()
             } else if (it.itemId == R.id.menuHome) {
-
+                loadHome()
             }
             else if (it.itemId == R.id.menuTiket) {
                 loadETiket()
@@ -62,6 +62,14 @@ class MainMenuActivity : AppCompatActivity() {
 
     fun loadETiket(){
         val fragment = ETiketsFragment(eKartu,this)
+        val fragmentManager = supportFragmentManager.beginTransaction()
+        fragmentManager.replace(R.id.flUser, fragment)
+        fragmentManager.setReorderingAllowed(true)
+        fragmentManager.commit()
+    }
+
+    fun loadHome(){
+        val fragment = HomeFragment(eKartu)
         val fragmentManager = supportFragmentManager.beginTransaction()
         fragmentManager.replace(R.id.flUser, fragment)
         fragmentManager.setReorderingAllowed(true)

@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".BrowseRuteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BeliETiketActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailTiketActivity"
             android:exported="false" />
         <activity
