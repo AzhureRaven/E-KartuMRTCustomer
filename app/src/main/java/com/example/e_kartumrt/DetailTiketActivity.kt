@@ -2,6 +2,8 @@ package com.example.e_kartumrt
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import com.example.e_kartumrt.Koneksi.toRupiah
 import com.example.e_kartumrt.databinding.ActivityDetailTiketBinding
 import com.example.e_kartumrt.databinding.ActivityMainBinding
@@ -37,5 +39,21 @@ class DetailTiketActivity : AppCompatActivity() {
         binding.tvETiketStaAkhir.text = "${binding.tvETiketStaAkhir.text} ${Koneksi.getStasiunAkhir(eTiket)?.nama_stasiun}"
         binding.tvETiketAlaAkhir.text = "${binding.tvETiketAlaAkhir.text} ${Koneksi.getStasiunAkhir(eTiket)?.alamat}"
         binding.tvETiketHarga.text = "${binding.tvETiketHarga.text} ${eTiket.harga.toInt().toRupiah()}"
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.back_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.optBack -> {
+                finish()
+            }
+            else -> {
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
