@@ -34,7 +34,7 @@ class DetailTiketActivity : AppCompatActivity() {
                 binding.tvETiketStatus.text = "Status: Non-Aktif"
             }
             3 -> {
-                binding.tvETiketStatus.setBackgroundColor(this.resources.getColor(R.color.purple_700))
+                binding.tvETiketStatus.setBackgroundColor(this.resources.getColor(R.color.digunakkan))
                 binding.tvETiketStatus.text = "Status: Sedang Digunakan"
             }
         }
@@ -66,7 +66,7 @@ class DetailTiketActivity : AppCompatActivity() {
         val height = point.y
         var dimen = if (width < height) width else height
         dimen = dimen * 3 / 4
-        val qrEncoder = QRGEncoder("{'id':${eTiket.id_tiket},'mode':'E-Tiket'}", null, QRGContents.Type.TEXT, dimen)
+        val qrEncoder = QRGEncoder("{'id':${eTiket.id_tiket},'mode':2}", null, QRGContents.Type.TEXT, dimen)
         try {
             val bitmap = Koneksi.invertImage(qrEncoder.bitmap)
             binding.ivETiketQR.setImageBitmap(bitmap)

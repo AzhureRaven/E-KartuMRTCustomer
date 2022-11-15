@@ -66,7 +66,7 @@ class ProfileFragment(val eKartu: EKartu, val conte:Context) : Fragment() {
         val height = point.y
         var dimen = if (width < height) width else height
         dimen = dimen * 3 / 4
-        val qrEncoder = QRGEncoder("{'id':${eKartu.id_kartu},'mode':'E-Kartu'}", null, QRGContents.Type.TEXT, dimen)
+        val qrEncoder = QRGEncoder("{'id':${eKartu.id_kartu},'mode':1}", null, QRGContents.Type.TEXT, dimen)
         try {
             val bitmap = Koneksi.invertImage(qrEncoder.bitmap)
             binding.ivProfileQR.setImageBitmap(bitmap)

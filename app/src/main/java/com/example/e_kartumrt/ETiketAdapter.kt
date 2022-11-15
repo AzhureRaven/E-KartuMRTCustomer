@@ -34,6 +34,7 @@ class ETiketAdapter (
             0 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.terpakai))
             1 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.aktif))
             2 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.nonaktif))
+            3 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.digunakkan))
         }
         holder.itemView.setOnClickListener{
             setOnClickListener?.invoke(tiket)

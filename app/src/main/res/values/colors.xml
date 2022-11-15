@@ -10,4 +10,5 @@
     <color name="aktif">#FF4CAF50</color>
     <color name="terpakai">#FFAAAAAA</color>
     <color name="nonaktif">#FFE91E63</color>
+    <color name="digunakkan">#FF2196F3</color>
 </resources>
