@@ -155,6 +155,7 @@ object Koneksi {
                 result.getInt("id_rute"),
                 result.getDouble("harga"),
                 result.getString("tgl_cetak"),
+                result.getInt("mode_tiket"),
                 result.getInt("status_tiket")
             )
             eTikets.add(eTiket)

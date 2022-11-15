@@ -12,6 +12,7 @@ data class ETiket(
     var id_rute:Int,
     var harga:Double,
     var tgl_cetak:String,
+    var mode_tiket:Int,
     var status_tiket:Int
 ) : Parcelable{
 }

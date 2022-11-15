@@ -31,6 +31,18 @@ class DetailTiketActivity : AppCompatActivity() {
                 binding.tvETiketStatus.setBackgroundColor(this.resources.getColor(R.color.nonaktif))
                 binding.tvETiketStatus.text = "Status: Non-Aktif"
             }
+            3 -> {
+                binding.tvETiketStatus.setBackgroundColor(this.resources.getColor(R.color.purple_700))
+                binding.tvETiketStatus.text = "Status: Sedang Digunakan"
+            }
+        }
+        when(eTiket.mode_tiket){
+            1 -> {
+                binding.tvETiketTipe.text = "Non-Tiket"
+            }
+            2 -> {
+                binding.tvETiketTipe.text = "Tiket"
+            }
         }
         binding.tvETiketNo.text = "${eTiket.id_tiket}"
         binding.tvETiketRute.text = "${Koneksi.getRute(eTiket)?.nama_rute}"
