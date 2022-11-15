@@ -38,10 +38,10 @@ class DetailTiketActivity : AppCompatActivity() {
         }
         when(eTiket.mode_tiket){
             1 -> {
-                binding.tvETiketTipe.text = "Non-Tiket"
+                binding.tvETiketTipe.text = "E-Kartu"
             }
             2 -> {
-                binding.tvETiketTipe.text = "Tiket"
+                binding.tvETiketTipe.text = "E-Tiket"
             }
         }
         binding.tvETiketNo.text = "${eTiket.id_tiket}"
