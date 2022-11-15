@@ -1,5 +1,7 @@
 package com.example.e_kartumrt
 
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import java.sql.Connection
@@ -8,7 +10,6 @@ import java.text.NumberFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 object Koneksi {
@@ -67,6 +68,40 @@ object Koneksi {
         // digunakan untuk mengubah format angka menjadi format uang rupiah
         val numberFormat = NumberFormat.getCurrencyInstance(Locale("in","ID"))
         return numberFormat.format(this)
+    }
+
+    fun invertImage(src: Bitmap): Bitmap? {
+        // create new bitmap with the same attributes(width,height)
+        //as source bitmap
+        val bmOut = Bitmap.createBitmap(src.width, src.height, src.config)
+        // color info
+        var A: Int
+        var R: Int
+        var G: Int
+        var B: Int
+        var pixelColor: Int
+        // image size
+        val height = src.height
+        val width = src.width
+
+        // scan through every pixel
+        for (y in 0 until height) {
+            for (x in 0 until width) {
+                // get one pixel
+                pixelColor = src.getPixel(x, y)
+                // saving alpha channel
+                A = Color.alpha(pixelColor)
+                // inverting byte for each R/G/B channel
+                R = 255 - Color.red(pixelColor)
+                G = 255 - Color.green(pixelColor)
+                B = 255 - Color.blue(pixelColor)
+                // set newly-inverted pixel to output image
+                bmOut.setPixel(x, y, Color.argb(A, R, G, B))
+            }
+        }
+
+        // return final bitmap
+        return bmOut
     }
 
     //EKartu

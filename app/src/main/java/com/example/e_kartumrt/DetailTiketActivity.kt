@@ -1,9 +1,11 @@
 package com.example.e_kartumrt
 
+import android.graphics.Point
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
+import androidmads.library.qrgenearator.QRGContents
+import androidmads.library.qrgenearator.QRGEncoder
 import com.example.e_kartumrt.Koneksi.toRupiah
 import com.example.e_kartumrt.databinding.ActivityDetailTiketBinding
 import com.example.e_kartumrt.databinding.ActivityMainBinding
@@ -39,9 +41,11 @@ class DetailTiketActivity : AppCompatActivity() {
         when(eTiket.mode_tiket){
             1 -> {
                 binding.tvETiketTipe.text = "E-Kartu"
+                binding.ivETiketQR.visibility = View.GONE
             }
             2 -> {
                 binding.tvETiketTipe.text = "E-Tiket"
+                generateQR()
             }
         }
         binding.tvETiketNo.text = "${eTiket.id_tiket}"
@@ -51,6 +55,24 @@ class DetailTiketActivity : AppCompatActivity() {
         binding.tvETiketStaAkhir.text = "${Koneksi.getStasiunAkhir(eTiket)?.nama_stasiun}"
         binding.tvETiketAlaAkhir.text = "${Koneksi.getStasiunAkhir(eTiket)?.alamat}"
         binding.tvETiketHarga.text = "${eTiket.harga.toInt().toRupiah()}"
+    }
+
+    fun generateQR(){
+        val windowManager: WindowManager = this.getSystemService(WINDOW_SERVICE) as WindowManager
+        val display: Display = windowManager.defaultDisplay
+        val point: Point = Point()
+        display.getSize(point)
+        val width = point.x
+        val height = point.y
+        var dimen = if (width < height) width else height
+        dimen = dimen * 3 / 4
+        val qrEncoder = QRGEncoder("{'id':${eTiket.id_tiket},'mode':'E-Tiket'}", null, QRGContents.Type.TEXT, dimen)
+        try {
+            val bitmap = Koneksi.invertImage(qrEncoder.bitmap)
+            binding.ivETiketQR.setImageBitmap(bitmap)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

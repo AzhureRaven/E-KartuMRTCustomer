@@ -2,9 +2,13 @@ package com.example.e_kartumrt
 
 import android.app.AlertDialog
 import android.content.DialogInterface
+import android.graphics.Point
 import android.os.Bundle
+import android.view.Display
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.e_kartumrt.databinding.ActivityMainMenuBinding
 
 
@@ -33,7 +37,7 @@ class MainMenuActivity : AppCompatActivity() {
     }
 
     fun loadProfile(){
-        val fragment = ProfileFragment(eKartu)
+        val fragment = ProfileFragment(eKartu,this)
         fragment.setOnLogoutListener = {
             val builder: AlertDialog.Builder = AlertDialog.Builder(this)
             builder.setTitle("Logout")
@@ -75,6 +79,5 @@ class MainMenuActivity : AppCompatActivity() {
         fragmentManager.setReorderingAllowed(true)
         fragmentManager.commit()
     }
-
 
 }

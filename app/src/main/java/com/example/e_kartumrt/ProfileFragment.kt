@@ -1,15 +1,21 @@
 package com.example.e_kartumrt
 
+import android.content.Context
+import android.content.Context.WINDOW_SERVICE
+import android.graphics.Point
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.view.*
+import androidmads.library.qrgenearator.QRGContents
+import androidmads.library.qrgenearator.QRGEncoder
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.example.e_kartumrt.Koneksi.toRupiah
 import com.example.e_kartumrt.databinding.FragmentProfileBinding
 
 
-class ProfileFragment(val eKartu: EKartu) : Fragment() {
+
+class ProfileFragment(val eKartu: EKartu, val conte:Context) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,6 +53,25 @@ class ProfileFragment(val eKartu: EKartu) : Fragment() {
             if(binding.etProfileSaldo.text.toString() != ""){
                 setOnSaldoListener?.invoke(binding.etProfileSaldo.text.toString().toInt())
             }
+        }
+        generateQR()
+    }
+
+    fun generateQR(){
+        val windowManager: WindowManager = conte.getSystemService(WINDOW_SERVICE) as WindowManager
+        val display: Display = windowManager.defaultDisplay
+        val point: Point = Point()
+        display.getSize(point)
+        val width = point.x
+        val height = point.y
+        var dimen = if (width < height) width else height
+        dimen = dimen * 3 / 4
+        val qrEncoder = QRGEncoder("{'id':${eKartu.id_kartu},'mode':'E-Kartu'}", null, QRGContents.Type.TEXT, dimen)
+        try {
+            val bitmap = Koneksi.invertImage(qrEncoder.bitmap)
+            binding.ivProfileQR.setImageBitmap(bitmap)
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 }
