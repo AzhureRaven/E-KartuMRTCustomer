@@ -10,6 +10,7 @@ import java.text.NumberFormat
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 object Koneksi {
@@ -213,6 +214,21 @@ object Koneksi {
             )
         }
         return rute
+    }
+
+    fun getRutes(): ArrayList<Rute>{
+        val query = getConnection().prepareStatement("select * from rute where status_rute != 2")
+        val result = query.executeQuery()
+        val rutes = ArrayList<Rute>()
+        while(result.next()){
+            val rute = Rute(result.getInt("id_rute"),
+                result.getString("nama_rute"),
+                result.getDouble("ppm"),
+                result.getInt("status_rute")
+            )
+            rutes.add(rute)
+        }
+        return rutes
     }
 
     //Stasiun

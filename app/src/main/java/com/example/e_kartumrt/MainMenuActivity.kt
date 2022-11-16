@@ -15,6 +15,7 @@ import com.example.e_kartumrt.databinding.ActivityMainMenuBinding
 class MainMenuActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainMenuBinding
     lateinit var eKartu: EKartu
+    var frag = "profile"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
@@ -25,11 +26,14 @@ class MainMenuActivity : AppCompatActivity() {
         binding.bnUser.setOnItemSelectedListener {
             if (it.itemId == R.id.menuProfile) {
                 loadProfile()
+                frag = "profile"
             } else if (it.itemId == R.id.menuHome) {
                 loadHome()
+                frag = "home"
             }
             else if (it.itemId == R.id.menuTiket) {
                 loadETiket()
+                frag = "etiket"
             }
             return@setOnItemSelectedListener true
         }
@@ -78,6 +82,14 @@ class MainMenuActivity : AppCompatActivity() {
         fragmentManager.replace(R.id.flUser, fragment)
         fragmentManager.setReorderingAllowed(true)
         fragmentManager.commit()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        eKartu = Koneksi.getEKartu(eKartu.username,eKartu.password)!!
+        if(frag == "home") loadHome()
+        else if(frag == "profile") loadProfile()
+        else loadETiket()
     }
 
 }
