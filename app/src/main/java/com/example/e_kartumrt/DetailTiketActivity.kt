@@ -50,11 +50,14 @@ class DetailTiketActivity : AppCompatActivity() {
         }
         binding.tvETiketNo.text = "${eTiket.id_tiket}"
         binding.tvETiketRute.text = "${Koneksi.getRute(eTiket)?.nama_rute}"
+        binding.tvETiketTglCetak.text = "${Koneksi.getDate(eTiket.tgl_cetak,"dd MMMM yyyy HH:mm")}"
         binding.tvETiketStaAwal.text = "${Koneksi.getStasiunAwal(eTiket)?.nama_stasiun}"
         binding.tvETiketAlaAwal.text = "${Koneksi.getStasiunAwal(eTiket)?.alamat}"
+        binding.tvETiketTglMasuk.text = "${eTiket.tgl_masuk?.let { Koneksi.getDate(it,"dd MMMM yyyy HH:mm") }}"
         binding.tvETiketStaAkhir.text = "${Koneksi.getStasiunAkhir(eTiket)?.nama_stasiun}"
         binding.tvETiketAlaAkhir.text = "${Koneksi.getStasiunAkhir(eTiket)?.alamat}"
-        binding.tvETiketHarga.text = "${eTiket.harga.toInt().toRupiah()}"
+        binding.tvETiketTglKeluar.text = "${eTiket.tgl_keluar?.let { Koneksi.getDate(it,"dd MMMM yyyy HH:mm") }}"
+        binding.tvETiketHarga.text = "${eTiket.harga?.toInt()?.toRupiah()}"
     }
 
     fun generateQR(){

@@ -29,7 +29,7 @@ class ETiketAdapter (
         holder.tvJudul.text = Koneksi.getRute(tiket)?.nama_rute
         holder.tvDetail.text = "${Koneksi.getStasiunAwal(tiket)?.nama_stasiun}\nto\n${Koneksi.getStasiunAkhir(tiket)?.nama_stasiun}"
         holder.tvTgl.text = Koneksi.getDate(tiket.tgl_cetak,"dd MMMM yyyy HH:mm")
-        holder.tvHarga.text = tiket.harga.toInt().toRupiah()
+        holder.tvHarga.text = tiket.harga?.toInt()?.toRupiah()
         when(tiket.status_tiket){
             0 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.terpakai))
             1 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.aktif))

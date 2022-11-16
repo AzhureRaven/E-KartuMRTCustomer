@@ -178,7 +178,7 @@ object Koneksi {
 
     //ETiket
     fun getETikets(eKartu: EKartu): ArrayList<ETiket>{
-        val query = getConnection().prepareStatement("select * from e_tiket where id_kartu = ${eKartu.id_kartu}")
+        val query = getConnection().prepareStatement("SELECT * from e_tiket where id_kartu = ${eKartu.id_kartu} order by tgl_cetak desc")
         val result = query.executeQuery()
         val eTikets = ArrayList<ETiket>()
         while(result.next()){
@@ -190,6 +190,8 @@ object Koneksi {
                 result.getInt("id_rute"),
                 result.getDouble("harga"),
                 result.getString("tgl_cetak"),
+                result.getString("tgl_masuk"),
+                result.getString("tgl_keluar"),
                 result.getInt("mode_tiket"),
                 result.getInt("status_tiket")
             )
