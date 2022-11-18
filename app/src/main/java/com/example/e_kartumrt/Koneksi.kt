@@ -259,4 +259,34 @@ object Koneksi {
         }
         return stasiun
     }
+
+    fun getStasiun(dRute: DRute): Stasiun?{
+        val query = getConnection().prepareStatement("select * from stasiun where id_stasiun = ${dRute.id_stasiun}")
+        val result = query.executeQuery()
+        var stasiun: Stasiun? = null
+        while(result.next()){
+            stasiun = Stasiun(result.getInt("id_stasiun"),
+                result.getString("alamat"),
+                result.getString("nama_stasiun"),
+                result.getInt("status_stasiun")
+            )
+        }
+        return stasiun
+    }
+
+    //DRute
+    fun getDRutes(rute:Rute): ArrayList<DRute>{
+        val query = getConnection().prepareStatement("select * from drute where id_rute = ${rute.id_rute} order by stasiun_ke asc")
+        val result = query.executeQuery()
+        val drutes = ArrayList<DRute>()
+        while(result.next()){
+            val drute = DRute(result.getInt("id_rute"),
+                result.getInt("id_stasiun"),
+                result.getInt("stasiun_ke"),
+                result.getInt("jarak_next"),
+            )
+            drutes.add(drute)
+        }
+        return drutes
+    }
 }
