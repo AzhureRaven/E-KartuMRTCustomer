@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.example.e_kartumrt.databinding.ActivityBeliEtiketBinding
-import com.example.e_kartumrt.databinding.ActivityDetailTiketBinding
-import com.example.e_kartumrt.databinding.ActivityMainMenuBinding
 
 class BeliETiketActivity : AppCompatActivity() {
     lateinit var binding: ActivityBeliEtiketBinding
