@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        Koneksi.startConnection()
         //Toast.makeText(this, Koneksi.getEKartus().toString(), Toast.LENGTH_SHORT).show()
 
         binding.btnLogin.setOnClickListener { 

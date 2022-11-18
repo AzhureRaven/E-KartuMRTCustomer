@@ -4,6 +4,9 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.sql.Connection
 import java.sql.DriverManager
 import java.text.NumberFormat
@@ -15,40 +18,48 @@ import kotlin.collections.ArrayList
 
 object Koneksi {
 
-    fun getConnection():Connection{
+    lateinit var koneksi: Connection
+    val coroutine = CoroutineScope(Dispatchers.IO)
+    fun startConnection(){
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
-        Class.forName("org.mariadb.jdbc.Driver")
-        //Class.forName("com.mysql.jdbc.Driver");
-        val ip = IP.getIP() //pake ip laptop sekarang yg ipv4, cari di cmd ipconfig //copy IP.kt di discord, paste ke project sendiri, di gitignore itu biar gk tabrakan ip address masing-masing laptop
-        //xampp kemungkinan juga perlu di run as administrator untuk bekerja
-        //val ip = "localhost"
-        val jdbcUrl = "jdbc:mariadb://$ip:3306/e_kartu_mrt"
-        try {
-            val connection = DriverManager.getConnection(jdbcUrl, "root", "")
-            println(connection.isValid(0))
-            println("Bekerja")
+        coroutine.launch {
+            Class.forName("org.mariadb.jdbc.Driver")
+            //Class.forName("com.mysql.jdbc.Driver");
+            val ip = IP.getIP() //pake ip laptop sekarang yg ipv4, cari di cmd ipconfig //copy IP.kt di discord, paste ke project sendiri, di gitignore itu biar gk tabrakan ip address masing-masing laptop
+            //xampp kemungkinan juga perlu di run as administrator untuk bekerja
+            //val ip = "localhost"
+            val jdbcUrl = "jdbc:mariadb://$ip:3306/e_kartu_mrt"
+            try {
+                val connection = DriverManager.getConnection(jdbcUrl, "root", "")
+                println(connection.isValid(0))
+                println("Bekerja")
 
-            //briefly cara pakenya
-            /*val query = connection.prepareStatement("SELECT * FROM rute")
-            val res = query.execute()//general purpose, return bool kalau berhasil
-            val res2 = query.executeUpdate()//INSERT UPDATE DELETE, return int
-            val result = query.executeQuery()//select
+                //briefly cara pakenya
+                /*val query = connection.prepareStatement("SELECT * FROM rute")
+                val res = query.execute()//general purpose, return bool kalau berhasil
+                val res2 = query.executeUpdate()//INSERT UPDATE DELETE, return int
+                val result = query.executeQuery()//select
 
-            while(result.next()){
+                while(result.next()){
 
-                val id = result.getInt("id_rute")
+                    val id = result.getInt("id_rute")
 
-                val name = result.getString("nama_rute")
-                println("$id $name")
-            }*/
+                    val name = result.getString("nama_rute")
+                    println("$id $name")
+                }*/
 
-            return connection
+                koneksi = connection
+            }
+            catch (e:Exception){
+                println(e)
+            }
+            koneksi = DriverManager.getConnection(jdbcUrl, "root", "")
         }
-        catch (e:Exception){
-            println(e)
-        }
-        return DriverManager.getConnection(jdbcUrl, "root", "")
+    }
+
+    fun getConnection():Connection{
+        return koneksi
     }
 
     //helper
