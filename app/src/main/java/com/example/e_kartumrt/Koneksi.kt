@@ -212,6 +212,12 @@ object Koneksi {
         return eTikets
     }
 
+    fun insertETiket(eTiket: ETiket){
+        val query = getConnection().prepareStatement("insert into e_tiket (id_kartu,id_stasiun_awal,id_stasiun_akhir,id_rute,harga) " +
+                "values ('${eTiket.id_kartu}','${eTiket.id_stasiun_awal}','${eTiket.id_stasiun_akhir}','${eTiket.id_rute}','${eTiket.harga}')")
+        val result = query.executeUpdate()
+    }
+
     //Rute
     fun getRute(eTiket: ETiket): Rute?{
         val query = getConnection().prepareStatement("select * from rute where id_rute = ${eTiket.id_rute}")

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.example.e_kartumrt.databinding.ActivityBeliEtiketBinding
 
 class BeliETiketActivity : AppCompatActivity() {
@@ -31,6 +32,10 @@ class BeliETiketActivity : AppCompatActivity() {
 
     fun loadTiket(rute:Rute){
         val fragment = BeliETiketFragment(eKartu, rute,this)
+        fragment.setOnPayListener = {
+            Toast.makeText(this, "Terima Kasih Atas Pembelian E-Tiket!", Toast.LENGTH_SHORT).show()
+            finish()
+        }
         val fragmentManager = supportFragmentManager.beginTransaction()
         fragmentManager.replace(R.id.flETiket, fragment)
         fragmentManager.addToBackStack(null)

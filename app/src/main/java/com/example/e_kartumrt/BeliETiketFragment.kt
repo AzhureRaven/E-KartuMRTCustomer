@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.example.e_kartumrt.Koneksi.toRupiah
 import com.example.e_kartumrt.databinding.FragmentBeliETiketBinding
 import com.example.e_kartumrt.databinding.FragmentBeliETiketRuteBinding
@@ -27,7 +28,7 @@ class BeliETiketFragment(val eKartu: EKartu, val rute: Rute, val conte: Context)
         val view = binding.root
         return view
     }
-
+    var setOnPayListener:(()-> Unit)? = null
     lateinit var druteAdapter: ArrayAdapter<DRute>
     lateinit var drutes: ArrayList<DRute>
     var harga = 0
@@ -76,6 +77,12 @@ class BeliETiketFragment(val eKartu: EKartu, val rute: Rute, val conte: Context)
                 binding.tvAlaAkhir.text = ""
             }
         }
+        binding.btnBeli.setOnClickListener {
+            beliETiket(false)
+        }
+        binding.btnBeliSaldo.setOnClickListener {
+            beliETiket(true)
+        }
         hitungHarga()
     }
 
@@ -106,6 +113,31 @@ class BeliETiketFragment(val eKartu: EKartu, val rute: Rute, val conte: Context)
         else{
             binding.btnBeli.isEnabled = false
             binding.btnBeliSaldo.isEnabled = false
+        }
+    }
+
+    fun beliETiket(dgnSaldo:Boolean){
+        if(jarak>0){
+            var boleh = true
+            if(dgnSaldo){
+                if(eKartu.saldo<harga){
+                    boleh = false
+                }
+            }
+            if(boleh){
+                val eTiket = ETiket(0,eKartu.id_kartu,
+                    drutes[awal].id_stasiun,
+                    drutes[akhir].id_stasiun,
+                    rute.id_rute,harga.toDouble(),
+                    "","","",2,1
+                )
+                if(dgnSaldo) Koneksi.tambahSaldo(eKartu,-harga)
+                Koneksi.insertETiket(eTiket)
+                setOnPayListener?.invoke()
+            }
+            else{
+                Toast.makeText(conte, "Maaf Saldo Tidak Mencukupi!", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
