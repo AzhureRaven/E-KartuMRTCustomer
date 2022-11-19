@@ -19,11 +19,9 @@ import kotlin.collections.ArrayList
 object Koneksi {
 
     lateinit var koneksi: Connection
-    val coroutine = CoroutineScope(Dispatchers.IO)
     fun startConnection(){
         val policy = ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
-        coroutine.launch {
             Class.forName("org.mariadb.jdbc.Driver")
             //Class.forName("com.mysql.jdbc.Driver");
             val ip = IP.getIP() //pake ip laptop sekarang yg ipv4, cari di cmd ipconfig //copy IP.kt di discord, paste ke project sendiri, di gitignore itu biar gk tabrakan ip address masing-masing laptop
@@ -55,7 +53,7 @@ object Koneksi {
                 println(e)
             }
             koneksi = DriverManager.getConnection(jdbcUrl, "root", "")
-        }
+
     }
 
     fun getConnection():Connection{
