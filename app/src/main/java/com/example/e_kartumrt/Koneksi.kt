@@ -136,7 +136,10 @@ object Koneksi {
     }
 
     fun getEKartu(username:String, password:String): EKartu?{
-        val query = getConnection().prepareStatement("select * from e_kartu where (username = '$username' or email = '$username' )and password = '$password' and status_kartu = 1")
+        val query = getConnection().prepareStatement("select * from e_kartu where (username = ? or email = ? )and password = ? and status_kartu = 1")
+        query.setString(1,username)
+        query.setString(2,username)
+        query.setString(3,password)
         val result = query.executeQuery()
         var eKartu: EKartu? = null
         while(result.next()){
@@ -156,7 +159,9 @@ object Koneksi {
     }
 
     fun checkEKartu(username:String, email:String): EKartu?{
-        val query = getConnection().prepareStatement("select * from e_kartu where (username = '$username' or email = '$email' )")
+        val query = getConnection().prepareStatement("select * from e_kartu where (username = ? or email = ? )")
+        query.setString(1,username)
+        query.setString(2,email)
         val result = query.executeQuery()
         var eKartu: EKartu? = null
         while(result.next()){
@@ -177,12 +182,20 @@ object Koneksi {
 
     fun insertEKartu(eKartu: EKartu){
         val query = getConnection().prepareStatement("insert into e_kartu (nama_lengkap,username,password,email,tgl_lahir,kelamin,saldo) " +
-                "values ('${eKartu.nama_lengkap}','${eKartu.username}','${eKartu.password}','${eKartu.email}','${eKartu.tgl_lahir}','${eKartu.kelamin}',0)")
+                "values (?,?,?,?,?,?,0)")
+        query.setString(1,eKartu.nama_lengkap)
+        query.setString(2,eKartu.username)
+        query.setString(3,eKartu.password)
+        query.setString(4,eKartu.email)
+        query.setString(5,eKartu.tgl_lahir)
+        query.setString(6,eKartu.kelamin)
         val result = query.executeUpdate()
     }
 
     fun tambahSaldo(eKartu: EKartu,saldo: Int){
-        val query = getConnection().prepareStatement("update e_kartu set saldo = saldo + $saldo where id_kartu = ${eKartu.id_kartu}")
+        val query = getConnection().prepareStatement("update e_kartu set saldo = saldo + ? where id_kartu = ?")
+        query.setInt(1,saldo)
+        query.setInt(2,eKartu.id_kartu)
         val result = query.executeUpdate()
     }
 
