@@ -115,26 +115,6 @@ object Koneksi {
     }
 
     //EKartu
-    fun getEKartus(): ArrayList<EKartu>{
-        val query = getConnection().prepareStatement("select * from e_kartu")
-        val result = query.executeQuery()
-        val EKartus = ArrayList<EKartu>()
-        while(result.next()){
-            EKartus.add(EKartu(result.getInt("id_kartu"),
-                result.getString("nama_lengkap"),
-                result.getString("username"),
-                result.getString("password"),
-                result.getString("email"),
-                result.getString("tgl_lahir"),
-                result.getString("kelamin"),
-                result.getString("tgl_register"),
-                result.getDouble("saldo"),
-                result.getInt("status_kartu")
-            ))
-        }
-        return EKartus
-    }
-
     fun getEKartu(username:String, password:String): EKartu?{
         val query = getConnection().prepareStatement("select * from e_kartu where (username = ? or email = ? )and password = ? and status_kartu = 1")
         query.setString(1,username)
@@ -246,6 +226,22 @@ object Koneksi {
 
     fun getRutes(): ArrayList<Rute>{
         val query = getConnection().prepareStatement("select * from rute where status_rute != 2")
+        val result = query.executeQuery()
+        val rutes = ArrayList<Rute>()
+        while(result.next()){
+            val rute = Rute(result.getInt("id_rute"),
+                result.getString("nama_rute"),
+                result.getDouble("ppm"),
+                result.getInt("status_rute")
+            )
+            rutes.add(rute)
+        }
+        return rutes
+    }
+
+    fun getRutes(search:String): ArrayList<Rute>{
+        val query = getConnection().prepareStatement("select * from rute where status_rute != 2 and nama_rute like ?")
+        query.setString(1, "%$search%")
         val result = query.executeQuery()
         val rutes = ArrayList<Rute>()
         while(result.next()){
