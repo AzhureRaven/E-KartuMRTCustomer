@@ -35,11 +35,11 @@ class DetailRuteFragment(val rute: Rute, val conte: Context) : Fragment() {
         binding.tvDetailPPM.text = "PPM : ${rute.ppm.toInt().toRupiah()}/Meter"
         drutes = Koneksi.getDRutes(rute)
         dRuteAdapter = DRuteAdapter(drutes,conte)
-        dRuteAdapter.setOnClickListener = { stasiun: Stasiun? ->
-
-        }
         val layoutManager = LinearLayoutManager(context)
         binding.rvDetailRute.adapter = dRuteAdapter
         binding.rvDetailRute.layoutManager = layoutManager
+        binding.ivBackRute.setOnClickListener {
+            activity?.supportFragmentManager?.popBackStack()
+        }
     }
 }

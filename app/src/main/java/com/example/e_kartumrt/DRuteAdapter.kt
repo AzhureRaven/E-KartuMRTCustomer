@@ -15,7 +15,7 @@ class DRuteAdapter  (
     var context: Context
 ) : RecyclerView.Adapter<DRuteAdapter.CustomViewHolder>(){
 
-    var setOnClickListener:((stasiun: Stasiun?)-> Unit)? = null
+    //var setOnClickListener:((stasiun: Stasiun?)-> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         var itemView = LayoutInflater.from(parent.context)
         return CustomViewHolder(itemView.inflate(
@@ -33,9 +33,9 @@ class DRuteAdapter  (
             0 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.terpakai))
             1 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.aktif))
         }
-        holder.itemView.setOnClickListener{
+        /*holder.itemView.setOnClickListener{
             setOnClickListener?.invoke(stasiun)
-        }
+        }*/
     }
 
     override fun getItemCount(): Int {
