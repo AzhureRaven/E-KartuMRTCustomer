@@ -33,6 +33,16 @@ class DetailRuteFragment(val rute: Rute, val conte: Context) : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.tvDetailRute.text = rute.nama_rute
         binding.tvDetailPPM.text = "PPM : ${rute.ppm.toInt().toRupiah()}/Meter"
+        when(rute.status_rute){
+            0 -> {
+                binding.tvRuteStatus.setBackgroundColor(this.resources.getColor(R.color.terpakai))
+                binding.tvRuteStatus.text = "Status: Maintenance"
+            }
+            1 -> {
+                binding.tvRuteStatus.setBackgroundColor(this.resources.getColor(R.color.aktif))
+                binding.tvRuteStatus.text = "Status: Aktif"
+            }
+        }
         drutes = Koneksi.getDRutes(rute)
         dRuteAdapter = DRuteAdapter(drutes,conte)
         val layoutManager = LinearLayoutManager(context)
