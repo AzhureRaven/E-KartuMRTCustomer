@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -19,7 +20,7 @@ class DRuteAdapter  (
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         var itemView = LayoutInflater.from(parent.context)
         return CustomViewHolder(itemView.inflate(
-            R.layout.rv_main, parent ,false
+            R.layout.rv_drute, parent ,false
         ))
     }
 
@@ -28,10 +29,15 @@ class DRuteAdapter  (
         val stasiun = Koneksi.getStasiun(dr)
         holder.tvJudul.text = stasiun?.nama_stasiun
         holder.tvDetail.text = stasiun?.alamat
-        holder.tvHarga.text = "${dr.jarak_next} Meter Ke Stasiun Berikutnya"
+        holder.tvTgl.text = dr.stasiun_ke.toString()
+        holder.tvJarakNext.text = "${dr.jarak_next} Meter"
         when(stasiun?.status_stasiun){
             0 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.terpakai))
             1 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.aktif))
+        }
+        if(position == drute.size-1) {
+            holder.tvJarakNext.visibility = View.GONE
+            holder.ivNext.visibility = View.GONE
         }
         /*holder.itemView.setOnClickListener{
             setOnClickListener?.invoke(stasiun)
@@ -47,6 +53,8 @@ class DRuteAdapter  (
         val tvDetail = view.findViewById<TextView>(R.id.tvDetail)
         val tvTgl = view.findViewById<TextView>(R.id.tvTgl)
         val tvHarga = view.findViewById<TextView>(R.id.tvHarga)
+        val tvJarakNext = view.findViewById<TextView>(R.id.tvJarakNext)
         val rvMain = view.findViewById<LinearLayout>(R.id.rvMain)
+        val ivNext = view.findViewById<ImageView>(R.id.ivNext)
     }
 }
