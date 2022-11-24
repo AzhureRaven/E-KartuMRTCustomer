@@ -26,10 +26,11 @@ class DRuteAdapter  (
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val dr = drute[position]
-        val stasiun = Koneksi.getStasiun(dr)
+        val stasiun = dr.getStasiun()
         holder.tvJudul.text = stasiun?.nama_stasiun
-        holder.tvDetail.text = stasiun?.alamat
-        holder.tvTgl.text = dr.stasiun_ke.toString()
+        holder.tvDetail.visibility = View.GONE
+        holder.tvHarga.visibility = View.GONE
+        holder.tvTgl.text = stasiun?.alamat
         holder.tvJarakNext.text = "${dr.jarak_next} Meter"
         when(stasiun?.status_stasiun){
             0 -> holder.rvMain.setBackgroundColor(context.resources.getColor(R.color.terpakai))
