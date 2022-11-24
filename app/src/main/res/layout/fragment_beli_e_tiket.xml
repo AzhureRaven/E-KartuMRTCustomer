@@ -48,7 +48,7 @@
                 android:layout_marginRight="10dp" />
 
             <TextView
-                android:id="@+id/tvProfileName5"
+                android:id="@+id/tvDetailRute"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
