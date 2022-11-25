@@ -86,7 +86,7 @@ class MainMenuActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        eKartu = Koneksi.getEKartu(eKartu)!!
+        eKartu = Koneksi.getEKartu(eKartu.id_kartu)!!
         if(frag == "home") loadHome()
         else if(frag == "profile") loadProfile()
         else loadETiket()

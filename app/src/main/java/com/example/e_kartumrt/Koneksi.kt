@@ -150,10 +150,8 @@ object Koneksi {
         return eKartu
     }
 
-    fun getEKartu(eKartu: EKartu): EKartu?{
-        val query = getConnection().prepareStatement("select * from e_kartu where username = ? and password = ? and status_kartu = 1")
-        query.setString(1,eKartu.username)
-        query.setString(2, eKartu.password)
+    fun getEKartu(id_kartu:Int): EKartu?{
+        val query = getConnection().prepareStatement("select * from e_kartu where id_kartu = ${id_kartu} and status_kartu = 1")
         val result = query.executeQuery()
         var eKartu: EKartu? = null
         while(result.next()){
