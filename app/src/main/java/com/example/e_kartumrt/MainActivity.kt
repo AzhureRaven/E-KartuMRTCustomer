@@ -18,15 +18,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener { 
             if(binding.etLogUser.text.toString()!="" && binding.etLogPass.text.toString()!=""){
-                val ekartu = Koneksi.getEKartu(binding.etLogUser.text.toString(),binding.etLogPass.text.toString())
-                if(ekartu != null){
-                    //Toast.makeText(this, ekartu.toString(), Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this, MainMenuActivity::class.java)
-                    intent.putExtra("ekartu",ekartu)
-                    startActivity(intent)
+                if(binding.etLogUser.text.toString().length <= 50 && binding.etLogPass.text.toString().length <= 50){
+                    val ekartu = Koneksi.getEKartu(binding.etLogUser.text.toString(),binding.etLogPass.text.toString())
+                    if(ekartu != null){
+                        //Toast.makeText(this, ekartu.toString(), Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, MainMenuActivity::class.java)
+                        intent.putExtra("ekartu",ekartu)
+                        startActivity(intent)
+                    }
+                    else{
+                        Toast.makeText(this, "Username/Password Invalid!", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 else{
-                    Toast.makeText(this, "Username/Password Invalid!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Input tidak boleh lebih dari 50 karakter!", Toast.LENGTH_SHORT).show()
                 }
             }
             else{
