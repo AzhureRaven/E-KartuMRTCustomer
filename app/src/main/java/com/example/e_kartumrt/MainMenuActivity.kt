@@ -86,10 +86,26 @@ class MainMenuActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        eKartu = Koneksi.getEKartu(eKartu.username,eKartu.password)!!
+        eKartu = Koneksi.getEKartu(eKartu)!!
         if(frag == "home") loadHome()
         else if(frag == "profile") loadProfile()
         else loadETiket()
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed()
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setTitle("Logout")
+        builder.setMessage("Apakah Anda Yakin Ingin Logout?")
+        builder.setPositiveButton("Iya",DialogInterface.OnClickListener { dialog, which ->
+            dialog.dismiss()
+            finish()
+        })
+        builder.setNegativeButton("Tidak", DialogInterface.OnClickListener { dialog, which ->
+            dialog.dismiss()
+        })
+        val alert: AlertDialog = builder.create()
+        alert.show()
     }
 
 }

@@ -7,6 +7,7 @@ import android.os.StrictMode.ThreadPolicy
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.security.MessageDigest
 import java.sql.Connection
 import java.sql.DriverManager
 import java.text.NumberFormat
@@ -80,6 +81,17 @@ object Koneksi {
         return numberFormat.format(this)
     }
 
+    fun String.sha256(): String {
+        return hashString(this, "SHA-256")
+    }
+
+    fun hashString(input: String, algorithm: String): String {
+        return MessageDigest
+            .getInstance(algorithm)
+            .digest(input.toByteArray())
+            .fold("", { str, it -> str + "%02x".format(it) })
+    }
+
     fun invertImage(src: Bitmap): Bitmap? {
         // create new bitmap with the same attributes(width,height)
         //as source bitmap
@@ -119,7 +131,29 @@ object Koneksi {
         val query = getConnection().prepareStatement("select * from e_kartu where (username = ? or email = ? )and password = ? and status_kartu = 1")
         query.setString(1,username)
         query.setString(2,username)
-        query.setString(3,password)
+        query.setString(3, password.sha256())
+        val result = query.executeQuery()
+        var eKartu: EKartu? = null
+        while(result.next()){
+            eKartu = EKartu(result.getInt("id_kartu"),
+                result.getString("nama_lengkap"),
+                result.getString("username"),
+                result.getString("password"),
+                result.getString("email"),
+                result.getString("tgl_lahir"),
+                result.getString("kelamin"),
+                result.getString("tgl_register"),
+                result.getDouble("saldo"),
+                result.getInt("status_kartu")
+            )
+        }
+        return eKartu
+    }
+
+    fun getEKartu(eKartu: EKartu): EKartu?{
+        val query = getConnection().prepareStatement("select * from e_kartu where username = ? and password = ? and status_kartu = 1")
+        query.setString(1,eKartu.username)
+        query.setString(2, eKartu.password)
         val result = query.executeQuery()
         var eKartu: EKartu? = null
         while(result.next()){
@@ -165,7 +199,7 @@ object Koneksi {
                 "values (?,?,?,?,?,?,0)")
         query.setString(1,eKartu.nama_lengkap)
         query.setString(2,eKartu.username)
-        query.setString(3,eKartu.password)
+        query.setString(3, eKartu.password.sha256())
         query.setString(4,eKartu.email)
         query.setString(5,eKartu.tgl_lahir)
         query.setString(6,eKartu.kelamin)
