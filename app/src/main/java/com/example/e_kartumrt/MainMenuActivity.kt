@@ -58,7 +58,7 @@ class MainMenuActivity : AppCompatActivity() {
         }
         fragment.setOnSaldoListener = {saldo: Int ->
             Koneksi.tambahSaldo(eKartu, saldo)
-            eKartu = Koneksi.getEKartu(eKartu.username,eKartu.password)!!
+            eKartu = Koneksi.getEKartu(eKartu.id_kartu)!!
             Toast.makeText(this, "Berhasil Tambah Saldo!", Toast.LENGTH_SHORT).show()
             loadProfile()
         }

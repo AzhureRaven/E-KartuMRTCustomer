@@ -147,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="Tanggal Registrasi :"
+                    android:text="Tanggal Registrasi  :"
                     android:textColor="#000000"
                     android:textSize="14sp" />
 
