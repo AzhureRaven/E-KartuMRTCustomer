@@ -38,14 +38,21 @@
 
                 <TextView
                     android:id="@+id/tvProfileUsernameTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="Username                : "
+                    android:text="Username"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
+                <TextView
+                    android:id="@+id/tvColon22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvProfileUsername"
                     android:layout_width="match_parent"
@@ -64,14 +71,21 @@
 
                 <TextView
                     android:id="@+id/tvProfileEmailTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="Email                        : "
+                    android:text="Email"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
+                <TextView
+                    android:id="@+id/tvColon23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvProfileEmail"
                     android:layout_width="match_parent"
@@ -90,14 +104,21 @@
 
                 <TextView
                     android:id="@+id/tvProfileTglLahirTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="Tanggal Lahir          : "
+                    android:text="Tanggal Lahir"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
+                <TextView
+                    android:id="@+id/tvColon24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvProfileTglLahir"
                     android:layout_width="match_parent"
@@ -117,14 +138,21 @@
 
                 <TextView
                     android:id="@+id/tvProfileKelaminTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="Jenis Kelamin         : "
+                    android:text="Jenis Kelamin"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
+                <TextView
+                    android:id="@+id/tvColon25"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvProfileKelamin"
                     android:layout_width="match_parent"
@@ -143,14 +171,21 @@
 
                 <TextView
                     android:id="@+id/tvProfileTglRegTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="Tanggal Registrasi  :"
+                    android:text="Tanggal Registrasi"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
+                <TextView
+                    android:id="@+id/tvColon26"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvProfileTglReg"
                     android:layout_width="match_parent"
@@ -169,14 +204,21 @@
 
                 <TextView
                     android:id="@+id/tvProfileSaldoTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="10dp"
-                    android:text="Saldo                        :"
+                    android:text="Saldo"
                     android:textColor="#000000"
                     android:textSize="14sp" />
-
+                <TextView
+                    android:id="@+id/tvColon27"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvProfileSaldo"
                     android:layout_width="match_parent"

@@ -44,13 +44,20 @@
 
                 <TextView
                     android:id="@+id/tvETiketNoTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Nomer "
+                    android:textColor="#000000"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/tvColon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Nomer          : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="20sp" />
-
                 <TextView
                     android:id="@+id/tvETiketNo"
                     android:layout_width="match_parent"
@@ -67,13 +74,20 @@
 
                 <TextView
                     android:id="@+id/tvETiketTipeTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Tipe"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Tipe                    : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvETiketTipe"
                     android:layout_width="match_parent"
@@ -90,13 +104,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketRuteTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Rute                    : "
+                    android:text="Rute"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketRute"
                     android:layout_width="match_parent"
@@ -114,13 +136,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketTglCetakTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Tanggal Cetak  : "
+                    android:text="Tanggal Cetak"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketTglCetak"
                     android:layout_width="match_parent"
@@ -138,13 +168,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketStaAwalTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Stasiun Awal     : "
+                    android:text="Stasiun Awal"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketStaAwal"
                     android:layout_width="match_parent"
@@ -161,13 +199,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketAlaAwalTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Alamat                : "
+                    android:text="Alamat"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketAlaAwal"
                     android:layout_width="match_parent"
@@ -184,13 +230,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketTglMasukTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Tanggal Masuk : "
+                    android:text="Tanggal Masuk"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketTglMasuk"
                     android:layout_width="match_parent"
@@ -208,13 +262,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketStaAkhirTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Stasiun Akhir     : "
+                    android:text="Stasiun Akhir"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketStaAkhir"
                     android:layout_width="match_parent"
@@ -231,13 +293,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketAlaAkhirTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Alamat                : "
+                    android:text="Alamat"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketAlaAkhir"
                     android:layout_width="match_parent"
@@ -254,13 +324,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketTglKeluarTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Tanggal Keluar  : "
+                    android:text="Tanggal Keluar"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketTglKeluar"
                     android:layout_width="match_parent"
@@ -278,13 +356,21 @@
 
                 <TextView
                     android:id="@+id/tvETiketHargaTitle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Harga                  : "
+                    android:text="Harga"
                     android:textColor="#000000"
                     android:textSize="16sp" />
 
+                <TextView
+                    android:id="@+id/tvColon12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text=": "
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
                 <TextView
                     android:id="@+id/tvETiketHarga"
                     android:layout_width="match_parent"

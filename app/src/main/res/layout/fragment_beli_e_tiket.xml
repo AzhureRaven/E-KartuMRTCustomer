@@ -88,13 +88,20 @@
 
                 <TextView
                     android:id="@+id/tvStaAwalTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Stasiun Awal"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Stasiun Awal     : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvStaAwal"
                     android:layout_width="match_parent"
@@ -113,13 +120,20 @@
 
                 <TextView
                     android:id="@+id/tvAlaAwalTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Alamat"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Alamat                : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvAlaAwal"
                     android:layout_width="match_parent"
@@ -138,13 +152,20 @@
 
                 <TextView
                     android:id="@+id/tvStaAkhirTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Stasiun Akhir"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Stasiun Akhir     : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvStaAkhir"
                     android:layout_width="match_parent"
@@ -163,13 +184,20 @@
 
                 <TextView
                     android:id="@+id/tvAlaAkhirTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Alamat"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Alamat                : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvAlaAkhir"
                     android:layout_width="match_parent"
@@ -189,13 +217,20 @@
 
                 <TextView
                     android:id="@+id/tvHargaPPMTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Harga/Meter"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Harga/Meter      : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvHargaPPM"
                     android:layout_width="match_parent"
@@ -214,13 +249,20 @@
 
                 <TextView
                     android:id="@+id/tvJarakTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Total Jarak"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Total Jarak         : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvJarak"
                     android:layout_width="match_parent"
@@ -239,13 +281,20 @@
 
                 <TextView
                     android:id="@+id/tvHargaTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Total Harga"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Total Harga        : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvHarga"
                     android:layout_width="match_parent"
@@ -284,13 +333,20 @@
 
                 <TextView
                     android:id="@+id/tvSaldoTitle"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Saldo Anda"
+                    android:textColor="#000000"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvColon21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Saldo Anda        : "
+                    android:text=": "
                     android:textColor="#000000"
                     android:textSize="16sp" />
-
                 <TextView
                     android:id="@+id/tvSaldo"
                     android:layout_width="match_parent"
